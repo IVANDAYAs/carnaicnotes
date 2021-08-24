@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Carnatic notes converter</title>
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<form id="notesi">
+		<h1>Type or paste western notes here</h1>
+		<textarea name="notes" rows="20" cols="50"> </textarea><br>
+	</form>
+	
+	<div>
+		<button type="submit" id="convertb" class="btn btn-outline-warning">CONVERT</button>
+		<h1>Converted Carnatic Notations</h1>
+		<h3 id="converted"></h3>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+	var cnotes = document.getElementById("notesi");
+	var convert = document.getElementById("convertb");
+	var converted = document.getElementById("converted");
+	convert.addEventListener("click", (e) => {
+		e.preventDefault();
+	    var notes = cnotes.notes.value; 
+	    var newnotes = notes.replace(/C/g, "S");
+	    newnotes = newnotes.replace(/c#/g, "r");
+	    newnotes =newnotes.replace(/D/g, "R");
+	    newnotes =newnotes.replace(/d#/g, "g");
+	    newnotes =newnotes.replace(/E/g, "G");
+	    newnotes =newnotes.replace(/F/g, "m");
+	    newnotes =newnotes.replace(/f#/g, "M");
+	    newnotes =newnotes.replace(/G/g, "P");
+	    newnotes =newnotes.replace(/g#/g, "d");
+	    newnotes =newnotes.replace(/A/g, "D");
+	    newnotes =newnotes.replace(/a#/g, "n");
+	    newnotes =newnotes.replace(/B/g, "N");
+	    newnotes =newnotes.replace(/\n/g, "<br />");
+	    converted.innerHTML = newnotes;
+	})
+</script>
